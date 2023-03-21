@@ -4,8 +4,14 @@ import 'package:flutter_sample/ui/state/user_state.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-class SignPage extends ConsumerWidget {
-  const SignPage({super.key});
+class SignInRoute extends GoRouteData {
+  const SignInRoute();
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const SignInPage();
+}
+
+class SignInPage extends ConsumerWidget {
+  const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,9 +21,9 @@ class SignPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('ログイン'),
       ),
-      body: _SignView(
+      body: _SignInView(
         onTapSignIn: () {
-          context.go('/sign/signIn');
+          userContainer.signIn();
         },
         onTapSignUp: () {
           userContainer.signUp();
@@ -27,8 +33,8 @@ class SignPage extends ConsumerWidget {
   }
 }
 
-class _SignView extends StatelessWidget {
-  const _SignView({
+class _SignInView extends StatelessWidget {
+  const _SignInView({
     required this.onTapSignIn,
     required this.onTapSignUp,
   });
@@ -42,7 +48,6 @@ class _SignView extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: Stack(children: [
         Column(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             OutlinedButton(
               style: OutlinedButton.styleFrom(
@@ -55,7 +60,7 @@ class _SignView extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                   fixedSize: const Size.fromWidth(double.maxFinite)),
               onPressed: onTapSignUp,
-              child: const Text('登録'),
+              child: const Text('ログイン'),
             ),
           ],
         )

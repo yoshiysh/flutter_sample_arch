@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_sample/ui/sign/sign_in/sign_in_page.dart';
 import 'package:flutter_sample/ui/state/user_state.dart';
 import 'package:flutter_sample/ui/my_home_page.dart';
 import 'package:flutter_sample/ui/sign/sign_page.dart';
@@ -14,10 +15,11 @@ GoRouter router(RouterRef ref) {
     routes: $appRoutes,
     redirect: (context, state) {
       final isAuthenticated = ref.read(userStateProvider).isAuthenticated;
-      if (!isAuthenticated && state.subloc != '/signIn') {
-        return '/signIn';
+      bool isSignPage = state.subloc.startsWith('/sign');
+      if (!isAuthenticated && !isSignPage) {
+        return '/sign';
       }
-      if (isAuthenticated && state.subloc == '/signIn') {
+      if (isAuthenticated && isSignPage) {
         return '/';
       }
       return state.subloc;
@@ -38,8 +40,8 @@ class MyHomeRoute extends GoRouteData {
 }
 
 @TypedGoRoute<SignRoute>(
-  path: '/signIn',
-  routes: [],
+  path: '/sign',
+  routes: [TypedGoRoute<SignInRoute>(path: 'signIn')],
 )
 class SignRoute extends GoRouteData {
   const SignRoute();

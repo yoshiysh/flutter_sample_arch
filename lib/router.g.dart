@@ -32,15 +32,36 @@ extension $MyHomeRouteExtension on MyHomeRoute {
 }
 
 GoRoute get $signRoute => GoRouteData.$route(
-      path: '/signIn',
+      path: '/sign',
       factory: $SignRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'signIn',
+          factory: $SignInRouteExtension._fromState,
+        ),
+      ],
     );
 
 extension $SignRouteExtension on SignRoute {
   static SignRoute _fromState(GoRouterState state) => const SignRoute();
 
   String get location => GoRouteData.$location(
-        '/signIn',
+        '/sign',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  void push(BuildContext context) => context.push(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+}
+
+extension $SignInRouteExtension on SignInRoute {
+  static SignInRoute _fromState(GoRouterState state) => const SignInRoute();
+
+  String get location => GoRouteData.$location(
+        '/sign/signIn',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -55,7 +76,7 @@ extension $SignRouteExtension on SignRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'9d48d36a86c26527a2aef816d72870311f4f68aa';
+String _$routerHash() => r'f88817396ea30aa8dc562c9e35e09d9086e5e459';
 
 /// See also [router].
 @ProviderFor(router)
