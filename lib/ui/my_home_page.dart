@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_sample/ui/container/user_container.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -40,6 +42,37 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+      drawer: const _AppDrawer(),
+    );
+  }
+}
+
+class _AppDrawer extends ConsumerWidget {
+  const _AppDrawer();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userContainer = ref.watch(userContainerProvider);
+
+    return Drawer(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+        child: Column(children: [
+          const Spacer(),
+          Column(
+            children: [
+              ElevatedButton(
+                style: OutlinedButton.styleFrom(
+                    fixedSize: const Size.fromWidth(double.maxFinite)),
+                onPressed: () => {
+                  userContainer.signOut(),
+                },
+                child: const Text('ログアウト'),
+              ),
+            ],
+          )
+        ]),
       ),
     );
   }

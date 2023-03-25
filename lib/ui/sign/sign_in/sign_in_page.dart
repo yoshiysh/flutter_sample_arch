@@ -25,9 +25,6 @@ class SignInPage extends ConsumerWidget {
         onTapSignIn: () {
           userContainer.signIn();
         },
-        onTapSignUp: () {
-          userContainer.signUp();
-        },
       ),
     );
   }
@@ -36,11 +33,9 @@ class SignInPage extends ConsumerWidget {
 class _SignInView extends StatelessWidget {
   const _SignInView({
     required this.onTapSignIn,
-    required this.onTapSignUp,
   });
 
   final VoidCallback onTapSignIn;
-  final VoidCallback onTapSignUp;
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +44,37 @@ class _SignInView extends StatelessWidget {
       child: Stack(children: [
         Column(
           children: [
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  fixedSize: const Size.fromWidth(double.maxFinite)),
-              onPressed: onTapSignIn,
-              child: const Text('ログイン'),
+            TextFormField(
+              decoration: InputDecoration(
+                  label: const Text('メールアドレス'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  )),
+              keyboardType: TextInputType.emailAddress,
+              textInputAction: TextInputAction.continueAction,
+              autofocus: true,
+              validator: (value) {
+                return "";
+              },
             ),
-            const Gap(16),
+            const Gap(32),
+            TextFormField(
+              decoration: InputDecoration(
+                  label: const Text('パスワード'),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  )),
+              keyboardType: TextInputType.visiblePassword,
+              textInputAction: TextInputAction.send,
+              validator: (value) {
+                return "";
+              },
+            ),
+            const Spacer(),
             ElevatedButton(
               style: OutlinedButton.styleFrom(
                   fixedSize: const Size.fromWidth(double.maxFinite)),
-              onPressed: onTapSignUp,
+              onPressed: onTapSignIn,
               child: const Text('ログイン'),
             ),
           ],
