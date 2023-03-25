@@ -3,13 +3,13 @@ import 'package:flutter_sample/data/repository/auth_default_repository.dart';
 import 'package:flutter_sample/data/repository/auth_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final userStateProvider = Provider((ref) {
+final userContainerProvider = Provider((ref) {
   final repository = ref.watch(authRepositoryProvider);
-  return UserState(repository);
+  return UserContainer(repository);
 });
 
-class UserState extends ChangeNotifier {
-  UserState(this._authRepository);
+class UserContainer extends ChangeNotifier {
+  UserContainer(this._authRepository);
 
   final AuthRepository _authRepository;
   String? _user;

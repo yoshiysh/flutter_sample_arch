@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_sample/ui/sign/sign_in/sign_in_page.dart';
-import 'package:flutter_sample/ui/state/user_state.dart';
+import 'package:flutter_sample/ui/container/user_container.dart';
 import 'package:flutter_sample/ui/my_home_page.dart';
 import 'package:flutter_sample/ui/sign/sign_page.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +14,7 @@ GoRouter router(RouterRef ref) {
   return GoRouter(
     routes: $appRoutes,
     redirect: (context, state) {
-      final isAuthenticated = ref.read(userStateProvider).isAuthenticated;
+      final isAuthenticated = ref.read(userContainerProvider).isAuthenticated;
       bool isSignPage = state.subloc.startsWith('/sign');
       if (!isAuthenticated && !isSignPage) {
         return '/sign';
@@ -24,7 +24,7 @@ GoRouter router(RouterRef ref) {
       }
       return state.subloc;
     },
-    refreshListenable: ref.watch(userStateProvider),
+    refreshListenable: ref.watch(userContainerProvider),
     debugLogDiagnostics: kDebugMode,
   );
 }

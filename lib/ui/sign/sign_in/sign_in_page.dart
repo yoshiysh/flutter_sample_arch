@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_sample/ui/state/user_state.dart';
+import 'package:flutter_sample/ui/container/user_container.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +15,7 @@ class SignInPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userContainer = ref.watch(userStateProvider);
+    final userContainer = ref.watch(userContainerProvider);
 
     return Scaffold(
       appBar: AppBar(
