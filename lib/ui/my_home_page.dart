@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_sample/ui/container/theme_container.dart';
 import 'package:flutter_sample/ui/container/user_container.dart';
 import 'package:flutter_sample/ui/theme/app_theme.dart';
 
@@ -65,8 +66,10 @@ class _AppDrawer extends ConsumerWidget {
               children: [
                 SwitchListTile(
                   title: const Text('ダークモード'),
-                  value: false,
+                  value: ref.read(themeContainerProvider).isDarkTheme,
                   onChanged: (value) {
+                    final themeContainer = ref.watch(themeContainerProvider);
+                    themeContainer.setTheme(value);
                     notifier.state = value ? ThemeMode.dark : ThemeMode.light;
                   },
                 ),

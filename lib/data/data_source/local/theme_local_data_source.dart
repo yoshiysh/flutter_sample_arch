@@ -8,9 +8,9 @@ class ThemeLocalDataSource extends ThemeDataSource {
   static const _KEY_THEME = "key_theme";
 
   @override
-  Future<void> setTheme(bool value) async {
+  Future<void> setTheme(bool isDarkMode) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool(_KEY_THEME, value);
+    sharedPreferences.setBool(_KEY_THEME, isDarkMode);
   }
 
   @override

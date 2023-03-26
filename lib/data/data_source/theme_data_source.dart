@@ -1,4 +1,4 @@
 abstract class ThemeDataSource {
-  Future<void> setTheme(bool value);
+  Future<void> setTheme(bool isDarkMode);
   Future<bool> getTheme();
 }

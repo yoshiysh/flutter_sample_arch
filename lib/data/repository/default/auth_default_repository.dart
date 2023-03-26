@@ -15,17 +15,14 @@ class AuthDefaultRepository implements AuthRepository {
   final AuthDataSource _dataSource;
 
   @override
-  Future<Result<void>> signIn() {
-    return Result.guardFuture(() async => (await _dataSource.signIn()));
-  }
+  Future<Result<void>> signIn() =>
+      Result.guardFuture(() async => (await _dataSource.signIn()));
 
   @override
-  Future<Result<void>> signUp() {
-    return Result.guardFuture(() async => (await _dataSource.signUp()));
-  }
+  Future<Result<void>> signUp() =>
+      Result.guardFuture(() async => (await _dataSource.signUp()));
 
   @override
-  Future<Result<void>> signOut() {
-    return Result.guardFuture(() async => (await _dataSource.signOut()));
-  }
+  Future<Result<void>> signOut() =>
+      Result.guardFuture(() async => (await _dataSource.signOut()));
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_sample/data/repository/auth_default_repository.dart';
 import 'package:flutter_sample/data/repository/auth_repository.dart';
+import 'package:flutter_sample/data/repository/default/auth_default_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final userContainerProvider = Provider((ref) {
