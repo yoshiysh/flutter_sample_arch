@@ -17,6 +17,7 @@ dependencies:
   retrofit:
   # For Model
   freezed_annotation:
+  shared_preferences:
   # For Navigation
   go_router:  
   # For DateTime

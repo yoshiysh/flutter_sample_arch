@@ -41,45 +41,76 @@ class _SignInView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-      child: Stack(children: [
-        Column(
-          children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  label: const Text('メールアドレス'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  )),
-              keyboardType: TextInputType.emailAddress,
-              textInputAction: TextInputAction.continueAction,
-              autofocus: true,
-              validator: (value) {
-                return "";
-              },
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
+              children: const [
+                _MainAddressTextField(),
+                Gap(32),
+                _PasswordTextField(),
+              ],
             ),
-            const Gap(32),
-            TextFormField(
-              decoration: InputDecoration(
-                  label: const Text('パスワード'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  )),
-              keyboardType: TextInputType.visiblePassword,
-              textInputAction: TextInputAction.send,
-              validator: (value) {
-                return "";
-              },
-            ),
-            const Spacer(),
-            ElevatedButton(
-              style: OutlinedButton.styleFrom(
-                  fixedSize: const Size.fromWidth(double.maxFinite)),
-              onPressed: onTapSignIn,
-              child: const Text('ログイン'),
-            ),
-          ],
-        )
-      ]),
+          ),
+          _LoginButton(onTapSignIn),
+        ],
+      ),
     );
   }
+}
+
+class _MainAddressTextField extends StatelessWidget {
+  const _MainAddressTextField();
+
+  @override
+  Widget build(BuildContext context) => TextFormField(
+        decoration: InputDecoration(
+          label: const Text('メールアドレス'),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        keyboardType: TextInputType.emailAddress,
+        textInputAction: TextInputAction.continueAction,
+        autofocus: true,
+        validator: (value) {
+          return "";
+        },
+      );
+}
+
+class _PasswordTextField extends StatelessWidget {
+  const _PasswordTextField();
+
+  @override
+  Widget build(BuildContext context) => TextFormField(
+        decoration: InputDecoration(
+          label: const Text('パスワード'),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        keyboardType: TextInputType.visiblePassword,
+        textInputAction: TextInputAction.send,
+        validator: (value) {
+          return "";
+        },
+      );
+}
+
+class _LoginButton extends StatelessWidget {
+  const _LoginButton(
+    this.onTapSignIn,
+  );
+
+  final VoidCallback onTapSignIn;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: OutlinedButton.styleFrom(
+          fixedSize: const Size.fromWidth(double.maxFinite),
+        ),
+        onPressed: onTapSignIn,
+        child: const Text('ログイン'),
+      );
 }

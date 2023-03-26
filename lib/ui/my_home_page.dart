@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sample/ui/container/user_container.dart';
+import 'package:flutter_sample/ui/theme/app_theme.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -53,26 +54,36 @@ class _AppDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(appThemeModeProvider.notifier);
     final userContainer = ref.watch(userContainerProvider);
 
     return Drawer(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-        child: Column(children: [
-          const Spacer(),
-          Column(
-            children: [
-              ElevatedButton(
-                style: OutlinedButton.styleFrom(
-                    fixedSize: const Size.fromWidth(double.maxFinite)),
-                onPressed: () => {
-                  userContainer.signOut(),
-                },
-                child: const Text('ログアウト'),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                SwitchListTile(
+                  title: const Text('ダークモード'),
+                  value: false,
+                  onChanged: (value) {
+                    notifier.state = value ? ThemeMode.dark : ThemeMode.light;
+                  },
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            child: ElevatedButton(
+              style: OutlinedButton.styleFrom(
+                fixedSize: const Size.fromWidth(double.maxFinite),
               ),
-            ],
-          )
-        ]),
+              onPressed: () => {userContainer.signOut()},
+              child: const Text('ログアウト'),
+            ),
+          ),
+        ],
       ),
     );
   }

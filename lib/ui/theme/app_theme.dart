@@ -4,11 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_sample/ui/theme/app_colors.dart';
 import 'package:flutter_sample/ui/theme/app_text_theme.dart';
-export 'package:flutter_sample/ui/theme/app_text_theme.dart' show TextStyleExt;
 
 final appThemeModeProvider =
     StateNotifierProvider<StateController<ThemeMode>, ThemeMode>(
-  (ref) => StateController(ThemeMode.dark),
+  (ref) => StateController(ThemeMode.light),
 );
 
 final appThemeProvider = Provider<AppTheme>(

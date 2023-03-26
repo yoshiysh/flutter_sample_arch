@@ -10,6 +10,7 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(appThemeProvider);
     final themeMode = ref.watch(appThemeModeProvider);
     final router = ref.watch(routerProvider);
 
@@ -22,6 +23,7 @@ class App extends ConsumerWidget {
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
+      theme: theme.data,
       darkTheme: AppTheme.dark().data,
       themeMode: themeMode,
       debugShowCheckedModeBanner: kDebugMode,
