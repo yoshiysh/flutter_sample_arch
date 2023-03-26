@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sample/router.dart';
@@ -23,6 +24,7 @@ class App extends ConsumerWidget {
       routeInformationProvider: router.routeInformationProvider,
       darkTheme: AppTheme.dark().data,
       themeMode: themeMode,
+      debugShowCheckedModeBanner: kDebugMode,
     );
   }
 }
