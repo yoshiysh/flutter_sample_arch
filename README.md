@@ -19,4 +19,4 @@ samples, guidance on mobile development, and a full API reference.
 1. flutter clean
 2. flutter gen-l10n
 3. flutter packages pub get
-4. flutter packages pub run build_runner build
+4. flutter packages pub run build_runner build --delete-conflicting-outputs
