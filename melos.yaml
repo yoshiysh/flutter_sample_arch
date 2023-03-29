@@ -1,0 +1,32 @@
+name: flutter_sample_arch
+
+packages:
+  - app
+
+ide:
+  intellij: true
+  vscode: true
+
+scripts:
+  pub:upgrade:
+    run: melos exec -- flutter pub upgrade
+
+  pub:get:
+    run: melos exec -- flutter pub get
+
+  build_runner:
+    exec: flutter pub run build_runner build --delete-conflicting-outputs
+    select-package:
+      depends-on: "build_runner"
+    description: "run build_runner in projects including build_runner"
+
+  analyze: melos exec -- dart analyze .
+
+  format: bash ./scripts/dartfmt.sh
+    
+  unit:test:
+    run: |
+      melos exec -- flutter test
+    select-package:
+      dir-exists:
+        - test
