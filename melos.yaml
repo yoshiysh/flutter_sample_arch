@@ -20,6 +20,12 @@ scripts:
       depends-on: "build_runner"
     description: "run build_runner in projects including build_runner"
 
+  clean:
+    run: melos exec -- flutter clean
+
+  gen-l10n:
+    run: melos exec -- flutter gen-l10n
+
   analyze: melos exec -- dart analyze .
 
   format: bash ./scripts/dartfmt.sh

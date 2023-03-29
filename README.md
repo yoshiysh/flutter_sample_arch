@@ -16,7 +16,7 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ## Setup
-1. flutter clean
-2. flutter gen-l10n
-3. flutter packages pub get
-4. flutter packages pub run build_runner build --delete-conflicting-outputs
+1. dart pub global activate melos
+2. melos gen-l10n
+3. melos pub:get
+4. melos build_runner
