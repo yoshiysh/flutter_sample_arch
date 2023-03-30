@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:ui/ui/container/user_container.dart';
-import 'package:ui/ui/my_home_page.dart';
-import 'package:ui/ui/sign/sign_in/sign_in_page.dart';
-import 'package:ui/ui/sign/sign_page.dart';
+import 'package:ui/container/user_container.dart';
+import 'package:ui/my_home_page.dart';
+import 'package:ui/sign/sign_in/sign_in_page.dart';
+import 'package:ui/sign/sign_page.dart';
 
 part 'router.g.dart';
 
@@ -41,16 +41,10 @@ class MyHomeRoute extends GoRouteData {
 
 @TypedGoRoute<SignRoute>(
   path: '/sign',
-  routes: [TypedGoRoute<SignRoute>(path: 'signIn')],
+  routes: [TypedGoRoute<SignInRoute>(path: 'signIn')],
 )
 class SignRoute extends GoRouteData {
   const SignRoute();
   @override
   Widget build(BuildContext context, GoRouterState state) => const SignPage();
-}
-
-class SignInRoute extends GoRouteData {
-  const SignInRoute();
-  @override
-  Widget build(BuildContext context, GoRouterState state) => const SignInPage();
 }

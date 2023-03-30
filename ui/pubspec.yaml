@@ -22,7 +22,7 @@ dependencies:
   freezed_annotation:
   shared_preferences:
   # For Navigation
-  go_router:  
+  go_router:
   # For DateTime
   intl:
   # For Util

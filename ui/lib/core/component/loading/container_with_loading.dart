@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui/ui/component/loading/loading.dart';
-import 'package:ui/ui/component/loading/loading_state.dart';
+import 'package:ui/core/component/loading/loading.dart';
+import 'package:ui/core/component/loading/loading_state.dart';
 
 class ContainerWithLoading extends ConsumerWidget {
   const ContainerWithLoading({

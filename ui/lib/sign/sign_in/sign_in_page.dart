@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:ui/ui/container/user_container.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ui/container/user_container.dart';
+
+class SignInRoute extends GoRouteData {
+  const SignInRoute();
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const SignInPage();
+}
 
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});

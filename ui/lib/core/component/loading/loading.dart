@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui/ui/theme/app_theme.dart';
+import 'package:ui/core/theme/app_theme.dart';
 
 class Loading extends ConsumerWidget {
   const Loading({Key? key}) : super(key: key);

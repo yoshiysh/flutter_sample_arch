@@ -18,7 +18,7 @@ dependencies:
   flutter_riverpod:
   riverpod_annotation:
   # For Navigation
-  go_router:  
+  go_router:
   # For DateTime
   intl:
   shared_preferences:
