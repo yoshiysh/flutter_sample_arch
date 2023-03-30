@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: data,domain,presentation
+dependency_overrides:
+  data:
+    path: ../data
+  domain:
+    path: ../domain
+  presentation:
+    path: ../presentation

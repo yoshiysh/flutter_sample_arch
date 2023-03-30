@@ -1,4 +1,4 @@
-name: root
+name: app_root
 description: A new Flutter project.
 version: 1.0.0
 publish_to: none
@@ -8,8 +8,8 @@ environment:
   flutter: '>=3.0.0'
 
 dependencies:
-  ui:
-    path: ../ui
+  presentation:
+    path: ../presentation
   data:
     path: ../data
   flutter:

@@ -1,8 +1,8 @@
 name: flutter_sample_arch
 
 packages:
-  - root
-  - ui
+  - app_root
+  - presentation
   - domain
   - data
 

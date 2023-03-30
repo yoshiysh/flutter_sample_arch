@@ -1,9 +1,9 @@
+import 'package:app_root/router/router.dart';
+import 'package:app_root/util/app_lifecycle_observer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:root/router/router.dart';
-import 'package:root/util/app_lifecycle_observer.dart';
-import 'package:ui/core/theme/app_theme.dart';
+import 'package:presentation/core/theme/app_theme.dart';
 
 class App extends ConsumerWidget {
   const App({super.key});

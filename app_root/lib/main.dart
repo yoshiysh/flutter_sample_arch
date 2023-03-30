@@ -1,9 +1,9 @@
+import 'package:app_root/app.dart';
 import 'package:data/data_source/local/shared_preferences.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:root/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore:depend_on_referenced_packages

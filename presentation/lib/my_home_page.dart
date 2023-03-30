@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ui/container/theme_container.dart';
-import 'package:ui/container/user_container.dart';
-import 'package:ui/core/theme/app_theme.dart';
+import 'package:presentation/container/theme_container.dart';
+import 'package:presentation/container/user_container.dart';
+import 'package:presentation/core/theme/app_theme.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -55,7 +55,6 @@ class _AppDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(appThemeModeProvider.notifier);
     final userContainer = ref.watch(userContainerProvider);
 
     return Drawer(
@@ -68,8 +67,10 @@ class _AppDrawer extends ConsumerWidget {
                   title: const Text('ダークモード'),
                   value: ref.read(themeContainerProvider).isDarkTheme,
                   onChanged: (value) {
-                    final themeContainer = ref.watch(themeContainerProvider);
+                    final themeContainer = ref.read(themeContainerProvider);
                     themeContainer.setTheme(value);
+
+                    final notifier = ref.read(appThemeModeProvider.notifier);
                     notifier.state = value ? ThemeMode.dark : ThemeMode.light;
                   },
                 ),

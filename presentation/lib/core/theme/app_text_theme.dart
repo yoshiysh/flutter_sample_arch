@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui/core/theme/font_size.dart';
+import 'package:presentation/core/theme/font_size.dart';
 
 class AppTextTheme {
   const AppTextTheme._({
