@@ -11,31 +11,82 @@ ide:
   vscode: true
 
 scripts:
-  pub:upgrade:
-    run: melos exec -- flutter pub upgrade
+  outdated:
+    run: melos exec --file-exists="pubspec.yaml" -c 1 --fail-fast -- "flutter pub outdated && exit"
+    description: Run `flutter pub outdated` in all packages.
 
-  pub:get:
-    run: melos exec -- flutter pub get
+  upgrade:
+    run: melos exec --file-exists="pubspec.yaml" -c 1 --fail-fast -- "flutter pub upgrade && exit"
+    description: Run `flutter pub upgrade` in all packages.
+  
+  generate:
+    run: melos run generate:dart && melos run generate:flutter
+    description: Build all generated files for Dart & Flutter packages in this project.
 
-  build_runner:
-    exec: flutter packages pub run build_runner build --delete-conflicting-outputs
-    select-package:
-      depends-on: "build_runner"
-    description: "run build_runner in projects including build_runner"
+  generate:dart:
+    run: melos exec -c 1 --depends-on="build_runner" --no-flutter -- "dart run build_runner build --delete-conflicting-outputs"
+    description: Build all generated files for Dart packages in this project.
 
-  clean:
-    run: melos exec -- flutter clean
+  generate:flutter:
+    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "flutter pub run build_runner build --delete-conflicting-outputs"
+    description: Build all generated files for Flutter packages in this project.
 
-  gen-l10n:
+  generate:launcher_icon:
+    run: melos exec --file-exists="flutter_launcher_icons.yaml" -c 1 --depends-on="flutter_launcher_icons" --flutter -- "flutter pub run flutter_launcher_icons:main"
+    description: Generate launcher icons for this project.
+
+  generate:localize:
     run: melos exec --scope="ui" -- flutter gen-l10n
+    description: Build generated files for L10n in ui package.
 
-  analyze: melos exec -- dart analyze .
-
-  format: bash ./scripts/dartfmt.sh
-    
-  unit:test:
+  analyze:
     run: |
-      melos exec -- flutter test
-    select-package:
-      dir-exists:
-        - test
+      melos exec -c 1 -- \
+        dart analyze .
+    description: |
+      Run `dart analyze` in all packages.
+       - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+
+  format:
+    run: dart format -o write  --show all .
+    description: Format all the code in this project.
+  
+  clean:
+    run: melos exec --file-exists="pubspec.yaml" -c 1 --fail-fast -- "flutter clean"
+    description: Run `flutter clean' for ios release to delete the build/ and .dart_tool/ directories.
+    packageFilters:
+      flutter: true
+      dirExists: build
+    
+  test:
+    run: melos run test:dart --no-select && melos run test:flutter --no-select && melos run test:genhtml_lcov
+    description: Run all Dart & Flutter tests in this project.
+
+  test:dart:
+    run: melos exec  -c 1 --fail-fast -- "\$MELOS_ROOT_PATH/scripts/coverage.sh"
+    description: Run Dart tests for a specific package in this project.
+    packageFilters:
+      flutter: false
+      dirExists: test
+
+  test:flutter:
+    run: melos exec --dir-exists="test" -c 1 --fail-fast -- "flutter test --coverage --exclude-tags=golden"
+    description: Run Flutter tests for a specific package in this project.
+    packageFilters:
+      flutter: true
+      dirExists: test
+
+  test:genhtml_lcov:
+    run: melos exec --file-exists="coverage/lcov.info" -c 1 --fail-fast -- "genhtml coverage/lcov.info -o coverage"
+    description: Generate line coverage report from lcov.info.
+
+  test:golden:
+    run: melos exec --dir-exists="test" -c 1 --fail-fast -- "flutter test --update-goldens --tags=golden"
+    description: Run Flutter golden tests for a specific package in this project.
+    packageFilters:
+      flutter: true
+      dirExists: test
+
+  check:all:
+    run: melos run clean:ui && melos run analyze && melos run format && melos run generate && melos run test
+    description: Check all packages in this project.

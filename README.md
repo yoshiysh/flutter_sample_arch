@@ -17,6 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Setup
 1. dart pub global activate melos (if needed)
-2. melos gen-l10n
-3. melos pub:get
-4. melos build_runner
+2. melos bootstrap
+3. melos generate:localize
+4. melos generate

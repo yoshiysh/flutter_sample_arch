@@ -26,7 +26,7 @@ class UserContainer extends ChangeNotifier {
 
   Future signUp() {
     return _authRepository.signUp().then((result) {
-      return result.when(
+      result.when(
         success: (_) {
           notifyListeners();
         },
@@ -37,7 +37,7 @@ class UserContainer extends ChangeNotifier {
 
   Future signOut() {
     return _authRepository.signOut().then((result) {
-      return result.when(
+      result.when(
         success: (_) {
           _user = null;
           notifyListeners();
