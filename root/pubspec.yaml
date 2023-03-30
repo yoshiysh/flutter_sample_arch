@@ -1,0 +1,41 @@
+name: root
+description: A new Flutter project.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=2.19.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  ui:
+    path: ../ui
+  data:
+    path: ../data
+  flutter:
+    sdk: flutter
+  # For Architecture
+  flutter_riverpod:
+  riverpod_annotation:
+  # For Navigation
+  go_router:  
+  # For DateTime
+  intl:
+  shared_preferences:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  # For Architecture
+  riverpod_generator:
+  riverpod_lint:
+  # For Navigation
+  go_router_builder:
+  # For Analyzer
+  custom_lint:
+  flutter_lints:
+
+flutter:
+  uses-material-design: true
+  generate: true

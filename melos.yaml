@@ -1,7 +1,10 @@
 name: flutter_sample_arch
 
 packages:
-  - app
+  - root
+  - ui
+  - domain
+  - data
 
 ide:
   intellij: true
@@ -15,7 +18,7 @@ scripts:
     run: melos exec -- flutter pub get
 
   build_runner:
-    exec: flutter pub run build_runner build --delete-conflicting-outputs
+    exec: flutter packages pub run build_runner build --delete-conflicting-outputs
     select-package:
       depends-on: "build_runner"
     description: "run build_runner in projects including build_runner"
@@ -24,7 +27,7 @@ scripts:
     run: melos exec -- flutter clean
 
   gen-l10n:
-    run: melos exec -- flutter gen-l10n
+    run: melos exec --scope="ui" -- flutter gen-l10n
 
   analyze: melos exec -- dart analyze .
 

@@ -1,0 +1,77 @@
+name: ui
+publish_to: none
+
+environment:
+  sdk: '>=2.19.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  domain:
+    path: ../domain
+  data:
+    path: ../data
+  flutter:
+    sdk: flutter
+  # For Architecture
+  flutter_riverpod:
+  riverpod_annotation:
+  # For Networking
+  dio:
+  retrofit:
+  # For Model
+  freezed_annotation:
+  shared_preferences:
+  # For Navigation
+  go_router:  
+  # For DateTime
+  intl:
+  # For Util
+  simple_logger:
+  # For UIs
+  gap:
+  cupertino_icons:
+  google_fonts:
+  flutter_svg:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  # For Architecture
+  riverpod_generator:
+  riverpod_lint:
+  # For Networking
+  retrofit_generator:
+  # For Assets
+  flutter_gen_runner:
+  # For Model
+  freezed:
+  json_serializable:
+  # For Navigation
+  go_router_builder:
+  # For Analyzer
+  custom_lint:
+  flutter_lints:
+  pedantic_mono:
+  # For Testing
+  mocktail:
+  image_test_utils:
+    git:
+      url: https://github.com/michaelgobbers/image_test_utils
+      ref: 6160ecc
+
+flutter_gen:
+  integrations:
+    flutter_svg: false
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/images/
+    # - assets/svgs/
+    # - assets/videos/
+  # fonts:
+  #   - family: Rotunda
+  #     fonts:
+  #       - asset: assets/fonts/Rotunda-Bold.otf

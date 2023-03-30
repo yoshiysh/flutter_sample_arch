@@ -16,7 +16,7 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ## Setup
-1. dart pub global activate melos
+1. dart pub global activate melos (if needed)
 2. melos gen-l10n
 3. melos pub:get
 4. melos build_runner
