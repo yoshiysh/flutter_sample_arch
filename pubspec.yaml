@@ -4,4 +4,5 @@ environment:
   sdk: '>=2.19.0'
 
 dev_dependencies:
-  melos: ^3.0.0
+  melos:
+  flutter_lints:
