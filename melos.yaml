@@ -1,5 +1,7 @@
 name: flutter_sample_arch
 
+sdkPath: .fvm/flutter_sdk
+
 packages:
   - app_root
   - presentation

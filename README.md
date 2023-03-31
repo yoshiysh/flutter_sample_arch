@@ -22,4 +22,6 @@ samples, guidance on mobile development, and a full API reference.
 4. melos generate
 
 ## Check Dependencies
-$ melos list --graph
+```.sh
+melos list --graph
+```
