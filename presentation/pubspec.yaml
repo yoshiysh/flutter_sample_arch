@@ -15,6 +15,9 @@ dependencies:
   # For Architecture
   flutter_riverpod:
   riverpod_annotation:
+  # Dependency Injection
+  injectable:
+  get_it:
   # For Networking
   dio:
   retrofit:
@@ -40,6 +43,8 @@ dev_dependencies:
   # For Architecture
   riverpod_generator:
   riverpod_lint:
+  # Dependency Injection
+  injectable_generator:
   # For Networking
   retrofit_generator:
   # For Assets

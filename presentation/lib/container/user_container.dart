@@ -1,10 +1,11 @@
-import 'package:data/repository/auth_default_repository.dart';
 import 'package:domain/repository/auth_repository.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final userContainerProvider = Provider((ref) {
-  final repository = ref.watch(authRepositoryProvider);
+  final getIt = GetIt.instance;
+  final repository = getIt.get<AuthRepository>();
   return UserContainer(repository);
 });
 

@@ -17,6 +17,9 @@ dependencies:
   # For Architecture
   flutter_riverpod:
   riverpod_annotation:
+  # Dependency Injection
+  injectable:
+  get_it:
   # For Navigation
   go_router:
   # For DateTime

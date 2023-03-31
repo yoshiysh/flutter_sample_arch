@@ -1,8 +1,10 @@
 import 'package:data/data_source/auth_data_source.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 
-final authDataSourceProvider = Provider((ref) => AuthRemoteDataSource());
+import 'auth_remote_data_source.config.dart';
 
+@Singleton(as: AuthDataSource)
 class AuthRemoteDataSource extends AuthDataSource {
   AuthRemoteDataSource();
 
@@ -15,3 +17,6 @@ class AuthRemoteDataSource extends AuthDataSource {
   @override
   Future<void> signOut() async {}
 }
+
+@injectableInit
+void configureDataDependencies(GetIt getIt) => getIt.init();

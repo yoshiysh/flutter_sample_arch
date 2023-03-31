@@ -1,14 +1,12 @@
 import 'package:data/data_source/auth_data_source.dart';
-import 'package:data/data_source/remote/auth_remote_data_source.dart';
 import 'package:domain/model/result.dart';
 import 'package:domain/repository/auth_repository.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 
-final authRepositoryProvider = Provider((ref) {
-  final dataSource = ref.watch(authDataSourceProvider);
-  return AuthDefaultRepository(dataSource);
-});
+import 'auth_default_repository.config.dart';
 
+@Injectable(as: AuthRepository)
 class AuthDefaultRepository implements AuthRepository {
   const AuthDefaultRepository(this._dataSource);
 
@@ -25,4 +23,9 @@ class AuthDefaultRepository implements AuthRepository {
   @override
   Future<Result<void>> signOut() =>
       Result.guardFuture(() async => (await _dataSource.signOut()));
+}
+
+@injectableInit
+void configureRepositoryDependencies(GetIt getIt) {
+  getIt.init();
 }
