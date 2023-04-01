@@ -1,12 +1,15 @@
 import 'package:data/data_source/auth_data_source.dart';
-import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-import 'auth_remote_data_source.config.dart';
-
-@Singleton(as: AuthDataSource)
+@lazySingleton
 class AuthRemoteDataSource extends AuthDataSource {
   AuthRemoteDataSource();
+
+  @factoryMethod  
+  static Future<AuthRemoteDataSource> create() async {
+    return AuthRemoteDataSource();
+  }
+
 
   @override
   Future<void> signIn() async {}
@@ -17,6 +20,3 @@ class AuthRemoteDataSource extends AuthDataSource {
   @override
   Future<void> signOut() async {}
 }
-
-@injectableInit
-void configureDataDependencies(GetIt getIt) => getIt.init();

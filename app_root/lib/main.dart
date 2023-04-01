@@ -16,7 +16,7 @@ Future<void> main() async {
   Intl.defaultLocale = 'ja';
 
   final getIt = GetIt.instance;
-  configureRepositoryDependencies(getIt);
+  // configureRepositoryDependencies(getIt);
 
   // turn off the # in the URLs on the web
   usePathUrlStrategy();
