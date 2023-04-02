@@ -1,18 +1,14 @@
-import 'package:data/data_source/local/shared_preferences.dart';
 import 'package:data/data_source/theme_data_source.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final themeDataSourceProvider = Provider((ref) {
-  final sharedPreferences = ref.watch(sharedPreferencesProvider);
-  return ThemeLocalDataSource(sharedPreferences);
-});
-
+@LazySingleton(as: ThemeDataSource)
 class ThemeLocalDataSource extends ThemeDataSource {
-  ThemeLocalDataSource(this._sharedPreferences);
-
-  static const _keyTheme = "key_theme";
   final SharedPreferences _sharedPreferences;
+  static const _keyTheme = "key_theme";
+
+  @factoryMethod
+  ThemeLocalDataSource.from(this._sharedPreferences);
 
   @override
   Future<void> setTheme(bool isDarkMode) async {

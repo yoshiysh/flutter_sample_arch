@@ -1,10 +1,10 @@
-import 'package:data/repository/theme_default_repository.dart';
 import 'package:domain/repository/theme_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 
 final themeContainerProvider = Provider((ref) {
-  final repository = ref.watch(themeRepositoryProvider);
+  final ThemeRepository repository = GetIt.instance.get();
   return ThemeContainer(repository);
 });
 

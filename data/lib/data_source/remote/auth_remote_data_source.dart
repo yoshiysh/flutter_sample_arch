@@ -1,10 +1,10 @@
 import 'package:data/data_source/auth_data_source.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:injectable/injectable.dart';
 
-final authDataSourceProvider = Provider((ref) => AuthRemoteDataSource());
-
+@LazySingleton(as: AuthDataSource)
 class AuthRemoteDataSource extends AuthDataSource {
-  AuthRemoteDataSource();
+  @factoryMethod
+  AuthRemoteDataSource.from();
 
   @override
   Future<void> signIn() async {}

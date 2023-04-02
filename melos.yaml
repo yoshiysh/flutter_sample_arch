@@ -3,6 +3,7 @@ name: flutter_sample_arch
 sdkPath: .fvm/flutter_sdk
 
 packages:
+  - di
   - app_root
   - presentation
   - domain

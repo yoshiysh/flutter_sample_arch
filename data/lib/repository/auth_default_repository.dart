@@ -1,18 +1,14 @@
 import 'package:data/data_source/auth_data_source.dart';
-import 'package:data/data_source/remote/auth_remote_data_source.dart';
 import 'package:domain/model/result.dart';
 import 'package:domain/repository/auth_repository.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:injectable/injectable.dart';
 
-final authRepositoryProvider = Provider((ref) {
-  final dataSource = ref.watch(authDataSourceProvider);
-  return AuthDefaultRepository(dataSource);
-});
-
+@LazySingleton(as: AuthRepository)
 class AuthDefaultRepository implements AuthRepository {
-  const AuthDefaultRepository(this._dataSource);
-
   final AuthDataSource _dataSource;
+
+  @factoryMethod
+  AuthDefaultRepository.from(this._dataSource);
 
   @override
   Future<Result<void>> signIn() =>

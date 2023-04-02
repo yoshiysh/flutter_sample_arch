@@ -1,0 +1,23 @@
+name: di
+publish_to: none
+
+environment:
+  sdk: '>=2.19.0'
+
+dependencies:
+  domain:
+    path: ../domain
+  data:
+    path: ../data
+  flutter:
+    sdk: flutter
+  # Dependency Injection
+  injectable:
+  get_it:
+
+dev_dependencies:
+  # Dependency Injection
+  injectable_generator:
+  # For Analyzer
+  custom_lint:
+  flutter_lints:

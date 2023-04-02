@@ -8,20 +8,21 @@ environment:
   flutter: '>=3.0.0'
 
 dependencies:
+  di:
+    path: ../di
   presentation:
     path: ../presentation
-  data:
-    path: ../data
   flutter:
     sdk: flutter
   # For Architecture
   flutter_riverpod:
   riverpod_annotation:
+  # Dependency Injection
+  injectable:
   # For Navigation
   go_router:
   # For DateTime
   intl:
-  shared_preferences:
 
 dev_dependencies:
   flutter_test:

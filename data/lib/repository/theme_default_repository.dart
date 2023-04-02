@@ -1,17 +1,13 @@
-import 'package:data/data_source/local/theme_local_data_source.dart';
 import 'package:data/data_source/theme_data_source.dart';
 import 'package:domain/repository/theme_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:injectable/injectable.dart';
 
-final themeRepositoryProvider = Provider((ref) {
-  final dataSource = ref.watch(themeDataSourceProvider);
-  return ThemeDefaultRepository(dataSource);
-});
-
+@LazySingleton(as: ThemeRepository)
 class ThemeDefaultRepository implements ThemeRepository {
-  const ThemeDefaultRepository(this._dataSource);
-
   final ThemeDataSource _dataSource;
+
+  @factoryMethod
+  ThemeDefaultRepository.from(this._dataSource);
 
   @override
   Future setTheme(bool isDarkMode) async => _dataSource.setTheme(isDarkMode);
