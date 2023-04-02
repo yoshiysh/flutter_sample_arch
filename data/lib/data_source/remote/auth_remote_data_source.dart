@@ -1,15 +1,10 @@
 import 'package:data/data_source/auth_data_source.dart';
 import 'package:injectable/injectable.dart';
 
-@lazySingleton
+@LazySingleton(as: AuthDataSource)
 class AuthRemoteDataSource extends AuthDataSource {
-  AuthRemoteDataSource();
-
-  @factoryMethod  
-  static Future<AuthRemoteDataSource> create() async {
-    return AuthRemoteDataSource();
-  }
-
+  @factoryMethod
+  AuthRemoteDataSource.from();
 
   @override
   Future<void> signIn() async {}

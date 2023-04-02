@@ -3,11 +3,12 @@ import 'package:domain/model/result.dart';
 import 'package:domain/repository/auth_repository.dart';
 import 'package:injectable/injectable.dart';
 
-@lazySingleton
+@LazySingleton(as: AuthRepository)
 class AuthDefaultRepository implements AuthRepository {
-  const AuthDefaultRepository(this._dataSource);
-
   final AuthDataSource _dataSource;
+
+  @factoryMethod
+  AuthDefaultRepository.from(this._dataSource);
 
   @override
   Future<Result<void>> signIn() =>

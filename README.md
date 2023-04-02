@@ -15,13 +15,33 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## Flutter Version Management
+### install w/ brew
+1. brew tap leoafarias/fvm
+2. brew install fvm
+
+### install w/ dart
+1. dart pub global activate fvm
+
+### Setup
+1. Add path
+```sh:.zshrc
+export PATH="$PATH:$HOME/.pub-cache/bin"
+```
+2. fvm install
+
+## melos
+### install
+```sh
+dart pub global activate melos
+```
+
 ## Setup
-1. dart pub global activate melos (if needed)
-2. melos bootstrap
-3. melos generate:localize
-4. melos generate
+1. melos bootstrap
+2. melos generate:localize
+3. melos generate
 
 ## Check Dependencies
-```.sh
+```sh
 melos list --graph
 ```
