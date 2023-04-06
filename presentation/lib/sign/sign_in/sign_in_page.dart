@@ -31,11 +31,15 @@ class SignInPage extends ConsumerWidget {
 }
 
 class _SignInView extends StatelessWidget {
-  const _SignInView({
+  _SignInView({
     required this.onTapSignIn,
   });
 
   final VoidCallback onTapSignIn;
+  final OutlineInputBorder _border = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(16),
+    borderSide: const BorderSide(color: Colors.grey),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +49,15 @@ class _SignInView extends StatelessWidget {
         children: [
           Expanded(
             child: Column(
-              children: const [
-                _MainAddressTextField(),
-                Gap(32),
-                _PasswordTextField(),
+              children: [
+                _MainAddressTextField(
+                  border: _border,
+                ),
+                const Gap(32),
+                _PasswordTextField(
+                  border: _border,
+                  onTapSignIn: onTapSignIn,
+                ),
               ],
             ),
           ),
@@ -60,15 +69,15 @@ class _SignInView extends StatelessWidget {
 }
 
 class _MainAddressTextField extends StatelessWidget {
-  const _MainAddressTextField();
+  const _MainAddressTextField({required this.border});
+  final OutlineInputBorder border;
 
   @override
   Widget build(BuildContext context) => TextFormField(
         decoration: InputDecoration(
           label: const Text('メールアドレス'),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
+          enabledBorder: border,
+          focusedBorder: border,
         ),
         keyboardType: TextInputType.emailAddress,
         textInputAction: TextInputAction.continueAction,
@@ -80,18 +89,24 @@ class _MainAddressTextField extends StatelessWidget {
 }
 
 class _PasswordTextField extends StatelessWidget {
-  const _PasswordTextField();
+  const _PasswordTextField({
+    required this.border,
+    required this.onTapSignIn,
+  });
+
+  final OutlineInputBorder border;
+  final VoidCallback onTapSignIn;
 
   @override
   Widget build(BuildContext context) => TextFormField(
         decoration: InputDecoration(
           label: const Text('パスワード'),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
+          enabledBorder: border,
+          focusedBorder: border,
         ),
         keyboardType: TextInputType.visiblePassword,
         textInputAction: TextInputAction.send,
+        onFieldSubmitted: (value) => onTapSignIn,
         validator: (value) {
           return "";
         },
@@ -106,10 +121,10 @@ class _LoginButton extends StatelessWidget {
   final VoidCallback onTapSignIn;
 
   @override
-  Widget build(BuildContext context) => ElevatedButton(
+  Widget build(BuildContext context) => OutlinedButton(
         style: OutlinedButton.styleFrom(
-          fixedSize: const Size.fromWidth(double.maxFinite),
-        ),
+            side: const BorderSide(color: Colors.green),
+            fixedSize: const Size.fromWidth(double.maxFinite)),
         onPressed: onTapSignIn,
         child: const Text('ログイン'),
       );

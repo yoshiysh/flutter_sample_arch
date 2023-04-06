@@ -22,9 +22,7 @@ class ThemeContainer extends ChangeNotifier {
 
   Future<void> getTheme() {
     return _themeRepository.getTheme().then((value) {
-       isDarkTheme = value;
-       notifyListeners();
-    }
-    );
+      isDarkTheme = value;
+    });
   }
 }

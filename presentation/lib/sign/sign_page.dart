@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:presentation/container/user_container.dart';
-import 'package:presentation/core/theme/app_colors.dart';
 
 class SignPage extends ConsumerWidget {
-  const SignPage({super.key});
+  const SignPage({
+    super.key,
+    required this.navigateToSignIn,
+  });
+
+  final VoidCallback navigateToSignIn;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,9 +18,7 @@ class SignPage extends ConsumerWidget {
         title: const Text('ログイン'),
       ),
       body: _SignView(
-        onTapSignIn: () {
-          context.go('/sign/signIn');
-        },
+        onTapSignIn: navigateToSignIn,
         onTapSignUp: () {
           ref.read(userContainerProvider).signUp();
         },

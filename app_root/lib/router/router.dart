@@ -46,5 +46,9 @@ class MyHomeRoute extends GoRouteData {
 class SignRoute extends GoRouteData {
   const SignRoute();
   @override
-  Widget build(BuildContext context, GoRouterState state) => const SignPage();
+  Widget build(BuildContext context, GoRouterState state) => SignPage(
+        navigateToSignIn: () {
+          context.go('/sign/signIn');
+        },
+      );
 }
