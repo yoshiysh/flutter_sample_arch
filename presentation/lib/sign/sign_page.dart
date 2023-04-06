@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:presentation/container/user_container.dart';
+import 'package:presentation/core/theme/app_colors.dart';
 
 class SignPage extends ConsumerWidget {
   const SignPage({super.key});
@@ -62,6 +63,7 @@ class _SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => OutlinedButton(
         style: OutlinedButton.styleFrom(
+            side: const BorderSide(color: Colors.green),
             fixedSize: const Size.fromWidth(double.maxFinite)),
         onPressed: onTapSignIn,
         child: const Text('ログイン'),
