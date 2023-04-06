@@ -9,8 +9,6 @@ class SignPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userContainer = ref.watch(userContainerProvider);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('ログイン'),
@@ -20,7 +18,7 @@ class SignPage extends ConsumerWidget {
           context.go('/sign/signIn');
         },
         onTapSignUp: () {
-          userContainer.signUp();
+          ref.read(userContainerProvider).signUp();
         },
       ),
     );

@@ -35,6 +35,14 @@ class AppTheme {
     final appColors = AppColors.light();
     final themeData = ThemeData.light().copyWith(
       useMaterial3: true,
+      colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.green,
+        accentColor: Colors.purple,
+        cardColor: Colors.white,
+        backgroundColor: Colors.lime,
+        errorColor: Colors.red,
+        brightness: Brightness.light,
+      ),
       scaffoldBackgroundColor: appColors.background,
       textTheme: GoogleFonts.notoSansTextTheme(ThemeData.light().textTheme),
       snackBarTheme: SnackBarThemeData(
@@ -55,6 +63,14 @@ class AppTheme {
     final appColors = AppColors.dark();
     final themeData = ThemeData.dark().copyWith(
       useMaterial3: true,
+      colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.green,
+        accentColor: Colors.purple,
+        cardColor: Colors.black,
+        backgroundColor: Colors.lime,
+        errorColor: Colors.red,
+        brightness: Brightness.dark,
+      ),
       scaffoldBackgroundColor: appColors.background,
       textTheme: GoogleFonts.notoSansTextTheme(ThemeData.dark().textTheme),
       snackBarTheme: SnackBarThemeData(
