@@ -17,9 +17,14 @@ class ThemeContainer extends ChangeNotifier {
   void setTheme(bool isDarkTheme) {
     this.isDarkTheme = isDarkTheme;
     _themeRepository.setTheme(isDarkTheme);
+    notifyListeners();
   }
 
-  void getTheme() {
-    _themeRepository.getTheme().then((value) => isDarkTheme = value);
+  Future<void> getTheme() {
+    return _themeRepository.getTheme().then((value) {
+       isDarkTheme = value;
+       notifyListeners();
+    }
+    );
   }
 }

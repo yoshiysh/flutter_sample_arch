@@ -70,6 +70,10 @@ class AppTheme {
     );
   }
 
+  bool isDarkTheme() {
+    return mode == ThemeMode.dark;
+  }
+
   final ThemeMode mode;
   final ThemeData data;
   final AppTextTheme textTheme;

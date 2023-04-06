@@ -56,6 +56,7 @@ class _AppDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userContainer = ref.watch(userContainerProvider);
+    final appTheme = ref.watch(appThemeProvider);
 
     return Drawer(
       child: Column(
@@ -65,7 +66,7 @@ class _AppDrawer extends ConsumerWidget {
               children: [
                 SwitchListTile(
                   title: const Text('ダークモード'),
-                  value: ref.read(themeContainerProvider).isDarkTheme,
+                  value: appTheme.isDarkTheme(),
                   onChanged: (value) {
                     final themeContainer = ref.read(themeContainerProvider);
                     themeContainer.setTheme(value);
