@@ -14,6 +14,10 @@ ide:
   vscode: true
 
 scripts:
+  init:
+    run: melos bootstrap && melos generate:localize && melos generate
+    description: Run `bootstrap, localize and generate` in all packages.
+
   outdated:
     run: melos exec --file-exists="pubspec.yaml" -c 1 --fail-fast -- "flutter pub outdated && exit"
     description: Run `flutter pub outdated` in all packages.
