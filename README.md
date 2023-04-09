@@ -37,9 +37,7 @@ dart pub global activate melos
 ```
 
 ## Setup
-1. melos bootstrap
-2. melos generate:localize
-3. melos generate
+1. melos init
 
 ## Check Dependencies
 ```sh

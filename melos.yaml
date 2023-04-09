@@ -15,6 +15,10 @@ ide:
 
 scripts:
   init:
+    run: melos clean && melos setup
+    description: Run `clean, bootstrap, localize and generate` in all packages.
+  
+  setup:
     run: melos bootstrap && melos generate:localize && melos generate
     description: Run `bootstrap, localize and generate` in all packages.
 
