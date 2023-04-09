@@ -4,8 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final userContainerProvider = Provider((ref) {
-  final getIt = GetIt.instance;
-  final repository = getIt.get<AuthRepository>();
+  final AuthRepository repository = GetIt.instance.get();
   return UserContainer(repository);
 });
 
