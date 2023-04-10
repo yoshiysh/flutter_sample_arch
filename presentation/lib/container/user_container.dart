@@ -5,18 +5,18 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final userContainerProvider = Provider((ref) {
   final AuthRepository repository = GetIt.instance.get();
-  return UserContainer(repository);
+  return UserContainer(authRepository: repository);
 });
 
 class UserContainer extends ChangeNotifier {
-  UserContainer(this._authRepository);
+  UserContainer({required this.authRepository});
 
-  final AuthRepository _authRepository;
+  final AuthRepository authRepository;
   String? _user;
   bool get isAuthenticated => _user != null;
 
   Future<void> signIn() {
-    return _authRepository.signIn().then((result) {
+    return authRepository.signIn().then((result) {
       result.ifSuccess((data) {
         _user = 'user';
         notifyListeners();
@@ -25,7 +25,7 @@ class UserContainer extends ChangeNotifier {
   }
 
   Future signUp() {
-    return _authRepository.signUp().then((result) {
+    return authRepository.signUp().then((result) {
       result.when(
         success: (_) {
           notifyListeners();
@@ -36,7 +36,7 @@ class UserContainer extends ChangeNotifier {
   }
 
   Future signOut() {
-    return _authRepository.signOut().then((result) {
+    return authRepository.signOut().then((result) {
       result.when(
         success: (_) {
           _user = null;
