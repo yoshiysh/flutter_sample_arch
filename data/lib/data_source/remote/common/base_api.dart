@@ -8,22 +8,25 @@ import 'package:data/data_source/remote/common/api_error/api_error.dart';
 abstract class BaseApi {
   String get baseUrl;
   String path = '';
-  List<String> get headers;
+  Map<String, String> get headers;
+
+  Uri _uri = Uri();
 }
 
 extension BaseApiExt on BaseApi {
-  Uri buildUri({required Map<String, dynamic> Function() parametersBuilder}) =>
-      Uri.https(baseUrl, path, parametersBuilder());
-}
+  BaseApi buildUri(
+      {required Map<String, dynamic> Function() parametersBuilder}) {
+    _uri = Uri.https(baseUrl, path, parametersBuilder());
+    return this;
+  }
 
-extension UriExt on Uri {
   Future<T> get<T>({
     required http.Client client,
     required T Function(dynamic data) builder,
   }) async {
     try {
-      debugPrint('url = $this');
-      final response = await client.get(this);
+      debugPrint('url = $_uri');
+      final response = await client.get(_uri, headers: headers);
       switch (response.statusCode) {
         case 200:
           final data = json.decode(response.body);

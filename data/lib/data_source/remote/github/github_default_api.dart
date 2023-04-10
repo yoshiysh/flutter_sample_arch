@@ -5,5 +5,7 @@ abstract class GithubDefaultApi extends BaseApi {
   String get baseUrl => 'api.github.com';
 
   @override
-  List<String> get headers => [];
+  Map<String, String> get headers => {
+        'content-type': 'application/json',
+      };
 }

@@ -14,5 +14,8 @@ class GithubDefaultRepository implements GithubRepository {
   Future<User> fetchUser({required String userName}) =>
       GithubAccountApi(userName: userName)
           .buildUri(parametersBuilder: () => {})
-          .get(client: client, builder: (data) => User.fromJson(data));
+          .get(
+            client: client,
+            builder: (data) => User.fromJson(data),
+          );
 }
