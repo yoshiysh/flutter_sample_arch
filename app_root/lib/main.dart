@@ -34,11 +34,13 @@ void registerErrorHandlers() {
     FlutterError.presentError(details);
     debugPrint(details.toString());
   };
+
   // * Handle errors from the underlying platform/OS
   PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-    debugPrint(error.toString());
+    debugPrint('[UNCAUGHT ERROR]: ${error.toString()}');
     return true;
   };
+
   // * Show some error UI when any widget in the app fails to build
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Scaffold(

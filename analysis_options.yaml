@@ -11,3 +11,5 @@ analyzer:
     - "**/*.gr.dart"
     - "**/l10n*.dart"
     - "**/*.gen.dart"
+  errors:
+    invalid_annotation_target: ignore

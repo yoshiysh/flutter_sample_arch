@@ -7,41 +7,65 @@ import 'package:data/data_source/remote/common/api_error/api_error.dart';
 
 abstract class BaseApi {
   String get baseUrl;
-  String path = '';
+  String path = '/';
   Map<String, String> get headers;
-
-  Uri _uri = Uri();
 }
 
 extension BaseApiExt on BaseApi {
-  BaseApi buildUri(
-      {required Map<String, dynamic> Function() parametersBuilder}) {
-    _uri = Uri.https(baseUrl, path, parametersBuilder());
-    return this;
+  Uri _buildUri(Map<String, dynamic>? queryParameters) {
+    try {
+      Uri uri = Uri.https(baseUrl, path, queryParameters);
+      debugPrint('[API URL] = $uri');
+      return uri;
+    } on FormatException catch (_) {
+      throw const APIError.notFound();
+    } catch (_) {
+      throw const APIError.unknown();
+    }
+  }
+
+  Future<http.Response> _call(Future<http.Response> Function() call) async {
+    try {
+      return await call();
+    } catch (error) {
+      debugPrint('[API ERROR]: ${error.toString()}');
+      if (error is UnsupportedError) {
+        throw const APIError.notFound();
+      } else if (error is SocketException) {
+        throw const APIError.noInternetConnection();
+      } else {
+        throw const APIError.unknown();
+      }
+    }
+  }
+
+  dynamic _validate(http.Response response) {
+    final String responseBody = response.body;
+    debugPrint('[API RESPONSE]: $responseBody');
+
+    final int statusCode = response.statusCode;
+    switch (statusCode) {
+      case 200:
+        return json.decode(responseBody);
+      case 401:
+        throw const APIError.invalidApiKey();
+      case 404:
+        throw const APIError.notFound();
+      default:
+        debugPrint('[API STATUS CODE]: $statusCode');
+        throw const APIError.unknown();
+    }
   }
 
   Future<T> get<T>({
     required http.Client client,
-    required T Function(dynamic data) builder,
+    Map<String, dynamic>? queryParameters,
+    required T Function(dynamic data) mapper,
   }) async {
-    try {
-      debugPrint('url = $_uri');
-      final response = await client.get(_uri, headers: headers);
-      switch (response.statusCode) {
-        case 200:
-          final data = json.decode(response.body);
-          return builder(data);
-        case 401:
-          throw const APIError.invalidApiKey();
-        case 404:
-          throw const APIError.notFound();
-        default:
-          throw const APIError.unknown();
-      }
-    } on SocketException catch (_) {
-      throw const APIError.noInternetConnection();
-    } finally {
-      client.close();
-    }
+    final response = await _call(() => client.get(
+          _buildUri(queryParameters),
+          headers: headers,
+        ));
+    return mapper(_validate(response));
   }
 }
