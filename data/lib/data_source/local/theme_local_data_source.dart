@@ -4,11 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @LazySingleton(as: ThemeDataSource)
 class ThemeLocalDataSource extends ThemeDataSource {
-  final SharedPreferences _sharedPreferences;
-  static const _keyTheme = "key_theme";
-
   @factoryMethod
   ThemeLocalDataSource.from(this._sharedPreferences);
+
+  final SharedPreferences _sharedPreferences;
+  static const _keyTheme = "key_theme";
 
   @override
   Future<void> setTheme(bool isDarkMode) async {

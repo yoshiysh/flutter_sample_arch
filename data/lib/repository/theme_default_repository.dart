@@ -4,10 +4,10 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: ThemeRepository)
 class ThemeDefaultRepository implements ThemeRepository {
-  final ThemeDataSource _dataSource;
-
   @factoryMethod
   ThemeDefaultRepository.from(this._dataSource);
+
+  final ThemeDataSource _dataSource;
 
   @override
   Future setTheme(bool isDarkMode) async => _dataSource.setTheme(isDarkMode);

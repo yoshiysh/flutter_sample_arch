@@ -5,10 +5,10 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: AuthRepository)
 class AuthDefaultRepository implements AuthRepository {
-  final AuthDataSource _dataSource;
-
   @factoryMethod
   AuthDefaultRepository.from(this._dataSource);
+
+  final AuthDataSource _dataSource;
 
   @override
   Future<Result<void>> signIn() =>

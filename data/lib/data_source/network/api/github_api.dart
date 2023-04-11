@@ -1,4 +1,4 @@
-import 'package:data/data_source/remote/common/base_api.dart';
+import 'package:data/data_source/network/api/base_api.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton

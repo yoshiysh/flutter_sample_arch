@@ -1,5 +1,5 @@
 import 'package:domain/model/user/user.dart';
 
 abstract class GithubRepository {
-  Future<User> fetchUser({required String userName});
+  Future<User> getUser({required String userName});
 }

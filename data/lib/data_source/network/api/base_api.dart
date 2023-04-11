@@ -1,4 +1,4 @@
-import 'package:data/data_source/remote/common/api_error/api_error.dart';
+import 'package:data/data_source/network/common/api_error/api_error.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class BaseApi {
