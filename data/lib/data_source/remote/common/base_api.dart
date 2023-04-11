@@ -8,7 +8,9 @@ import 'package:data/data_source/remote/common/api_error/api_error.dart';
 abstract class BaseApi {
   String get baseUrl;
   String path = '/';
-  Map<String, String> get headers;
+  Map<String, String> headers = {
+    'content-type': 'application/json',
+  };
 }
 
 extension BaseApiExt on BaseApi {

@@ -1,7 +1,7 @@
-import 'package:data/data_source/remote/github/github_default_api.dart';
+import 'package:data/data_source/remote/github/github_api.dart';
 
-class GithubAccountApi extends GithubDefaultApi {
-  GithubAccountApi({required String userName}) {
+class GithubUsersApi extends GithubApi {
+  GithubUsersApi(String userName) {
     path = '/users/$userName';
   }
 }
