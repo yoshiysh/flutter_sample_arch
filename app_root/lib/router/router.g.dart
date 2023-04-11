@@ -6,12 +6,12 @@ part of 'router.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<GoRoute> get $appRoutes => [
+List<RouteBase> get $appRoutes => [
       $myHomeRoute,
       $signRoute,
     ];
 
-GoRoute get $myHomeRoute => GoRouteData.$route(
+RouteBase get $myHomeRoute => GoRouteData.$route(
       path: '/',
       factory: $MyHomeRouteExtension._fromState,
     );
@@ -31,7 +31,7 @@ extension $MyHomeRouteExtension on MyHomeRoute {
       context.pushReplacement(location);
 }
 
-GoRoute get $signRoute => GoRouteData.$route(
+RouteBase get $signRoute => GoRouteData.$route(
       path: '/sign',
       factory: $SignRouteExtension._fromState,
       routes: [
