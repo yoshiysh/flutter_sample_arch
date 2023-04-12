@@ -1,0 +1,14 @@
+name: core
+publish_to: none
+
+environment:
+  sdk: '>=2.19.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  basic_utils:
+
+dev_dependencies:
+  custom_lint:
+  flutter_lints:

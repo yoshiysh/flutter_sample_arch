@@ -5,6 +5,8 @@ environment:
   sdk: '>=2.19.0'
 
 dependencies:
+  core:
+    path: ../core
   domain:
     path: ../domain
   flutter:

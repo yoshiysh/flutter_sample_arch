@@ -4,6 +4,7 @@ sdkPath: .fvm/flutter_sdk
 
 packages:
   - di
+  - core
   - app_root
   - presentation
   - domain

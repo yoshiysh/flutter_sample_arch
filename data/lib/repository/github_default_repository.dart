@@ -1,4 +1,5 @@
 import 'package:data/data_source/github_data_source.dart';
+import 'package:domain/model/query/query.dart';
 import 'package:domain/model/user/user.dart';
 import 'package:domain/repository/github_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -13,4 +14,7 @@ class GithubDefaultRepository implements GithubRepository {
   @override
   Future<User> getUser({required String userName}) =>
       _dataSource.getUser(userName);
+
+  @override
+  Future<void> search({required Query query}) => _dataSource.search(query);
 }

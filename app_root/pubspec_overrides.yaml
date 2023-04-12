@@ -1,5 +1,7 @@
-# melos_managed_dependency_overrides: data,di,domain,presentation
+# melos_managed_dependency_overrides: core,data,di,domain,presentation
 dependency_overrides:
+  core:
+    path: ../core
   data:
     path: ../data
   di:

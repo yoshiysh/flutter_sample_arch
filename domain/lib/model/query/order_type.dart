@@ -1,0 +1,5 @@
+enum OrderType {
+  asc,
+  desc,
+  ;
+}
