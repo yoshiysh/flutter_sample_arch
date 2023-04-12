@@ -1,6 +1,6 @@
 import 'package:data/data_source/github_data_source.dart';
 import 'package:data/data_source/network/api/github_api.dart';
-import 'package:data/data_source/network/common/api_client.dart';
+import 'package:data/data_source/network/api/api_client.dart';
 import 'package:domain/model/user/user.dart';
 import 'package:injectable/injectable.dart';
 

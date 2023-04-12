@@ -12,9 +12,9 @@
 import 'package:data/data_source/auth_data_source.dart' as _i3;
 import 'package:data/data_source/github_data_source.dart' as _i15;
 import 'package:data/data_source/local/theme_local_data_source.dart' as _i11;
+import 'package:data/data_source/network/api/api_client.dart' as _i14;
 import 'package:data/data_source/network/api/github_api.dart' as _i8;
 import 'package:data/data_source/network/auth_network_data_source.dart' as _i4;
-import 'package:data/data_source/network/common/api_client.dart' as _i14;
 import 'package:data/data_source/network/github_network_data_source.dart'
     as _i16;
 import 'package:data/data_source/theme_data_source.dart' as _i10;
