@@ -2,6 +2,7 @@ import 'package:data/data_source/github_data_source.dart';
 import 'package:data/data_source/network/api/github_api.dart';
 import 'package:data/data_source/network/api/api_client.dart';
 import 'package:domain/model/query/query.dart';
+import 'package:domain/model/repository/repositories.dart';
 import 'package:domain/model/user/user.dart';
 import 'package:injectable/injectable.dart';
 
@@ -20,8 +21,8 @@ class GithubNetworkDataSource extends GithubDataSource {
       );
 
   @override
-  Future<void> search(Query query) => _client.get(
+  Future<Repositories> search(Query query) => _client.get(
         _api.search(query),
-        mapper: (data) {},
+        mapper: (data) => Repositories.fromJson(data),
       );
 }
